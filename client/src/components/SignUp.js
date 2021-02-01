@@ -1,19 +1,81 @@
-import React from 'react'
+
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import * as Yup from 'yup'
+import SUschema from '../validation/SUformSchema'
+
+
+
+const initialSUFormValues = {
+    username:'',
+    password:'',
+    pwconfirm: '',
+    userType: '',
+  }
+  
+  const initialSUFormErrors={
+    username:'',
+    password:'',
+    pwconfirm: '',
+    userType: '',
+  }
+  
+  const initialDisabled = true;
+  
+
 
 export default function SignUp(props) {
-    const {values, change, submit, errors, disabled} = props
+    // const {values, change, submit, errors, disabled} = props
     
-    const onChange= (evt) => {
-        const { name, value } = evt.target;
-        change(name, value);
-    }
 
-    const onSubmit=(evt)=>{
-        evt.preventDefault();
-        submit();
+    ///////////////
+    const [users, setUsers]= useState([])
+  const [formValues, setFormValues] = useState(initialSUFormValues)
+  const [formErrors, setFormErrors] = useState(initialSUFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
+
+  const postNewUser = (newUser) =>{
+    axios.post('https://reqres.in/api/users', newUser)
+    .then((resp)=>{
+      setUsers([resp.data, ...users])
+      setFormValues(initialSUFormValues)
+    })
+  }
+
+  const handleChange= (evt) => {
+    const { name, value } = evt.target;
+    Yup.reach(SUschema, name)
+    .validate(value)
+    .then(()=>{
+        setFormErrors({...formErrors, [name]:''})
+    })
+    .catch((err)=>{
+        setFormErrors({...formErrors, [name]:err.errors[0]})
+    })
+
+      setFormValues({...formValues, [name]:value})
+  }
+
+  const formSubmit = (evt) => {
+    evt.preventDefault();
+    const newUser={
+    username: formValues.username.trim(),
+    password: formValues.password.trim(),
+    pwconfirm: formValues.password.trim(),
+    userType: formValues.userType,
     }
+    postNewUser(newUser)
+  }
+
+  useEffect(()=>{
+    SUschema.isValid(formValues)
+    .then((valid)=>{
+      setDisabled(!valid);
+    })
+  },[formValues])
+
 
     return (
         <PageContainer >
@@ -23,31 +85,31 @@ export default function SignUp(props) {
             <SignUpContainer>
             <div>
                 <h1>Sign Up</h1>
-            <Form onSubmit={onSubmit}>
+            <Form onSubmit={formSubmit}>
                 <Label>
-                    <input placeholder='username' name="username" type='text' value={values.username} onChange={onChange} className= 'input-box'></input>
+                    <input placeholder='username' name="username" type='text' value={formValues.username} onChange={handleChange} className= 'input-box'></input>
                 </Label>
                 <Label>
-                    <input placeholder='password' name='password' type='password' value={values.password} onChange={onChange} className= 'input-box'></input>
+                    <input placeholder='password' name='password' type='password' value={formValues.password} onChange={handleChange} className= 'input-box'></input>
                 </Label>
                 <Label>
-                    <input placeholder='password' name='pwconfirm' type='password' value={values.pwconfirm} onChange={onChange} className= 'input-box'></input>
+                    <input placeholder='password' name='pwconfirm' type='password' value={formValues.pwconfirm} onChange={handleChange} className= 'input-box'></input>
                 </Label>
                 <RadBtns className='radioBtns'>
                 <Label>
-                    <input name='userType' type='radio' value='renter' checked={values.userType === 'renter'} onChange={onChange} className= 'input-box'></input>
+                    <input name='userType' type='radio' value='renter' checked={formValues.userType === 'renter'} onChange={handleChange} className= 'input-box'></input>
                     I want to rent someone else's stuff
                 </Label>
                 <Label>
-                    <input name='userType' type='radio' value='owner' checked={values.userType === 'owner'} onChange={onChange} className= 'input-box'></input>
+                    <input name='userType' type='radio' value='owner' checked={formValues.userType === 'owner'} onChange={handleChange} className= 'input-box'></input>
                     I want to rent my stuff to someone else
                 </Label>
                 </RadBtns>
                 <div className='formErrors'>
-                    <p>{errors.username}</p>
-                    <p>{errors.password}</p>
-                    <p>{errors.pwconfirm}</p>
-                    <p>{errors.userType}</p>
+                    <p>{formErrors.username}</p>
+                    <p>{formErrors.password}</p>
+                    <p>{formErrors.pwconfirm}</p>
+                    <p>{formErrors.userType}</p>
                 </div>
                 <ButtonStyle disabled={disabled}> Sign Up </ButtonStyle>
                 <Links>
@@ -81,7 +143,7 @@ const TitleStyle = styled.div`
 
 const SignUpContainer= styled.div`
     border: 2px solid yellow;
-    width: 60%;
+    width: 50%;
     background-color: #0C2A3E;
     display:flex;
     justify-content: center;
