@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -14,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,25 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-header h1{
+  position: absolute;
+  width: 370px;
+  height: 88px;
+  left: 535px;
+  top: 174px;
 
+  font-family: 'NovaMono', monospace;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 67px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #353535;
+
+}
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +54,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+.renter-login {
+  position: absolute;
+  width: 745px;
+  height: 440px;
+  left: 348px;
+  top: 292px;
+
+  background: #163245;
+  border-radius: 20px;
 }
