@@ -1,8 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 
 export default function SignUp(props) {
-    const {values, change, submit, users} = props
+    const {values, change, submit, errors, disabled} = props
     
     const onChange= (evt) => {
         const { name, value } = evt.target;
@@ -35,7 +34,13 @@ export default function SignUp(props) {
                     <input name='userType' type='radio' value='owner' checked={values.userType === 'owner'} onChange={onChange}></input>
                     I want to rent my stuff to someone else
                 </label>
-                <button> Sign Up </button>
+                <div className='formErrors'>
+                    <p>{errors.username}</p>
+                    <p>{errors.password}</p>
+                    <p>{errors.pwconfirm}</p>
+                    <p>{errors.userType}</p>
+                </div>
+                <button disabled={disabled}> Sign Up </button>
                 
             </form>
           

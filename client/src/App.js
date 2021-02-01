@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import SignUp from './components/SignUp'
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import {Route} from 'react-router-dom'
 import axios from 'axios';
-
-
+import * as Yup from 'yup'
+import SUschema from './validation/SUformSchema'
 
 const initialSUFormValues = {
   username:'',
@@ -14,10 +14,20 @@ const initialSUFormValues = {
   userType: '',
 }
 
+const initialSUFormErrors={
+  username:'',
+  password:'',
+  pwconfirm: '',
+  userType: '',
+}
+
+const initialDisabled = true;
+
 function App() {
   const [users, setUsers]= useState([])
   const [formValues, setFormValues] = useState(initialSUFormValues)
-
+  const [formErrors, setFormErrors] = useState(initialSUFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
 
   const postNewUser = (newUser) =>{
     axios.post('https://reqres.in/api/users', newUser)
@@ -26,8 +36,20 @@ function App() {
       setFormValues(initialSUFormValues)
     })
   }
-  const handleChange= (name, values) => {
-      setFormValues({...formValues, [name]:values})
+
+
+  const handleChange= (name, value) => {
+    
+    Yup.reach(SUschema, name)
+    .validate(value)
+    .then(()=>{
+        setFormErrors({...formErrors, [name]:''})
+    })
+    .catch((err)=>{
+        setFormErrors({...formErrors, [name]:err.errors[0]})
+    })
+
+      setFormValues({...formValues, [name]:value})
   }
 
   const formSubmit = () => {
@@ -39,6 +61,13 @@ function App() {
     }
     postNewUser(newUser)
   }
+
+  useEffect(()=>{
+    SUschema.isValid(formValues)
+    .then((valid)=>{
+      setDisabled(!valid);
+    })
+  },[formValues])
 
 
   return (
@@ -59,7 +88,7 @@ function App() {
       </header>
 
       <Route path='/signup'>
-        <SignUp values={formValues} change={handleChange} submit={formSubmit} users={users}/>
+        <SignUp values={formValues} change={handleChange} submit={formSubmit} errors={formErrors} disabled={disabled}/>
       </Route>
     </div>
   );
