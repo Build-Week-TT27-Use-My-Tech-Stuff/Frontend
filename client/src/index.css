@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.loginLink{
+  text-decoration: none;
+  color: #80ED99;
+}
+.input-box{
+  background-color:#FFFFFF;
+  border: none;
+  width: 24rem;
+  font-size: 1.1rem;
+  padding: 1% 0% 1% 4%;
+}
