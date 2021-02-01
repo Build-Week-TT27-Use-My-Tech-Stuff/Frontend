@@ -7,12 +7,24 @@ const Card = styled.section`
 background-color:#163245;
 color:white;
 border-radius:1rem;
-padding:5rem;
+padding:3rem;
+margin-left:25rem;
+margin-right:25rem;
+margin-top:10rem;
+
+
 `
 
 function OwnerLogin() {
-    const [formvalues, setFormvalues] = useState({username:"",
-password:""})
+    const [formvalues, setFormvalues] = useState(
+        
+    {username:"",
+    password:""}
+    )
+
+
+
+
     return (
       <div className="App">
         <h3>Are you a renter?</h3>
@@ -25,7 +37,6 @@ password:""})
         setFormvalues={setFormvalues}
         formvalues={formvalues}
         />
-
         </Card>
 
 

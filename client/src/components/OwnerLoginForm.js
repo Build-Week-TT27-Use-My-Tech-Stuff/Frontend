@@ -23,7 +23,7 @@ border-radius:1rem;
 padding:1rem;
 border:none;
 width:50%;
-
+cursor:pointer;
 `
 
 
