@@ -11,13 +11,25 @@ border-radius:1rem;
 padding:3rem;
 margin-left:25rem;
 margin-right:25rem;
-margin-top:10rem;
 font-family: 'Nova Mono', monospace;
 
 `
 
 const H1 = styled.h1`
-font-size:5rem
+font-size:3rem;
+font-family: 'Nova Mono', monospace;
+
+
+`
+const H3 = styled.h3`
+font-family: 'Nova Square', monospace;
+text-decoration: none;
+margin:auto;
+padding-left:25rem;
+margin-left:25rem;
+
+margin-bottom: 7rem;
+
 `
 
 
@@ -35,9 +47,10 @@ function OwnerLogin() {
     return (
       <div className="App">
         <Link to ="/renter-login">
-        <h3>Are you a renter?</h3>
+        <H3>Are you a renter?</H3>
         </Link>
-        <h1 >Rent my Tech</h1>
+
+        <H1 >Rent my Tech</H1>
 
         <Card>
         <H1>Owner Login</H1>
