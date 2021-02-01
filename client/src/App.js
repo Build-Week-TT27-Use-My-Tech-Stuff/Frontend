@@ -1,7 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import SignUp from './components/SignUp'
+import React, {useState} from 'react'
+import {Route} from 'react-router-dom'
+
+
+
+const initialSUFormValues = {
+  username:'',
+  password:'',
+  pwconfirm: '',
+  userType: '',
+}
 
 function App() {
+
+  const [formValues, setFormValues] = useState(initialSUFormValues)
+
+  const handleChange= (name, values) => {
+      setFormValues({...formValues, [name]:values})
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +37,12 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Route path='/signup'>
+        <SignUp values={formValues} change={handleChange}/>
+      </Route>
+      
+      
     </div>
   );
 }
