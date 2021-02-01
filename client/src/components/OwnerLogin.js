@@ -34,8 +34,9 @@ function OwnerLogin() {
 
     return (
       <div className="App">
+        <Link to ="/renter-login">
         <h3>Are you a renter?</h3>
-
+        </Link>
         <h1 >Rent my Tech</h1>
 
         <Card>
