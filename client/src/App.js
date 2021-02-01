@@ -3,6 +3,7 @@ import './App.css';
 import SignUp from './components/SignUp'
 import React, {useState} from 'react'
 import {Route} from 'react-router-dom'
+import axios from 'axios';
 
 
 
@@ -14,12 +15,31 @@ const initialSUFormValues = {
 }
 
 function App() {
-
+  const [users, setUsers]= useState([])
   const [formValues, setFormValues] = useState(initialSUFormValues)
 
+
+  const postNewUser = (newUser) =>{
+    axios.post('https://reqres.in/api/users', newUser)
+    .then((resp)=>{
+      setUsers([resp.data, ...users])
+      setFormValues(initialSUFormValues)
+    })
+  }
   const handleChange= (name, values) => {
       setFormValues({...formValues, [name]:values})
   }
+
+  const formSubmit = () => {
+    const newUser={
+    username: formValues.username.trim(),
+    password: formValues.password.trim(),
+    pwconfirm: formValues.password.trim(),
+    userType: formValues.userType,
+    }
+    postNewUser(newUser)
+  }
+
 
   return (
     <div className="App">
@@ -39,10 +59,8 @@ function App() {
       </header>
 
       <Route path='/signup'>
-        <SignUp values={formValues} change={handleChange}/>
+        <SignUp values={formValues} change={handleChange} submit={formSubmit} users={users}/>
       </Route>
-      
-      
     </div>
   );
 }

@@ -1,17 +1,23 @@
 import React from 'react'
+import axios from 'axios'
 
 export default function SignUp(props) {
-    const {values, change} = props
+    const {values, change, submit, users} = props
     
     const onChange= (evt) => {
-        const { name, value } = evt.target
-        change(name, value)
+        const { name, value } = evt.target;
+        change(name, value);
+    }
+
+    const onSubmit=(evt)=>{
+        evt.preventDefault();
+        submit();
     }
 
     return (
         <div>
             <h1>Sign Up</h1>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label>
                     <input placeholder='username' name="username" type='text' value={values.username} onChange={onChange}></input>
                 </label>
@@ -32,6 +38,7 @@ export default function SignUp(props) {
                 <button> Sign Up </button>
                 
             </form>
+          
         </div>
     )
 }
