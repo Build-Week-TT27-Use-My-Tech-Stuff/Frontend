@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OwnerLoginForm from './OwnerLoginForm'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 
 const Card = styled.section`
@@ -11,9 +12,15 @@ padding:3rem;
 margin-left:25rem;
 margin-right:25rem;
 margin-top:10rem;
-
+font-family: 'Nova Mono', monospace;
 
 `
+
+const H1 = styled.h1`
+font-size:5rem
+`
+
+
 
 function OwnerLogin() {
     const [formvalues, setFormvalues] = useState(
@@ -29,10 +36,10 @@ function OwnerLogin() {
       <div className="App">
         <h3>Are you a renter?</h3>
 
-        <h1>Rent my Tech</h1>
+        <h1 >Rent my Tech</h1>
 
         <Card>
-        <h1>Owner Login</h1>
+        <H1>Owner Login</H1>
         <OwnerLoginForm 
         setFormvalues={setFormvalues}
         formvalues={formvalues}

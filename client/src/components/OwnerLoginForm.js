@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 
 
 
@@ -24,8 +25,16 @@ padding:1rem;
 border:none;
 width:50%;
 cursor:pointer;
-`
+font-family: 'Nova Square', monospace;
+font-size: 1rem;
 
+
+`
+const Span = styled.span`
+color:#80ED99;
+font-family: 'Nova Square', monospace;
+font-size:1rem;
+`
 
 function OwnerLoginForm(props) {
   const { setFormvalues, formvalues } = props
@@ -76,7 +85,7 @@ function OwnerLoginForm(props) {
           
           />
         </Form>
-        <h5>Not yet a member?  | <span>  Sign Up</span> </h5> 
+        <h5>Not yet a member?  | <Link to ='/signup'><Span>  Sign Up</Span></Link> </h5> 
       </div>
     );
   }
