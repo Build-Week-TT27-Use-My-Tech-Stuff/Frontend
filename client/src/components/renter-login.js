@@ -4,18 +4,6 @@ import OwnerLogin from './owner-login-test'
 import {Link, Route, Switch} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 const RenterLogin = () => {
-    // const { values, submit, change, disabled, errors } = props;
-    // console.log(values)
-    // const onSubmit = event => {
-    //     event.preventDefault();
-    //     submit();
-    // }
-
-    // const onChange = event => {
-    //     const { name, value, type, checked } = event.target;
-
-    //     change( name, type === 'checkbox' ? checked : value );
-    // }
     const {register, handleSubmit, errors} = useForm();
     const onSubmit = (data) => {
         
@@ -48,15 +36,6 @@ const RenterLogin = () => {
                 <span className = 'sign-up'>Not yet a member? | <Link to = '/signup'>Sign up</Link></span>
             </form>
         </div>
-        <Switch>
-            <Route path = {'/ownerlogin'}>
-                <OwnerLogin/>
-            </Route>
-            <Route path = {'/signup'}>
-                <SignUp/>
-            </Route>
-            <Route path = {'/'} component = {RenterLogin}/>
-        </Switch>
       </div>
   );
 };
