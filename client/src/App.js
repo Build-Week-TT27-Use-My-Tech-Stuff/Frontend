@@ -4,7 +4,7 @@ import RenterLogin from './components/renter-login'
 import React from "react";
 import {Route} from 'react-router-dom'
 import SignUp from './components/SignUp'
-
+import OwnerPostItem from './components/OwnerPostItemForm'
 
 
 
@@ -17,6 +17,7 @@ function App() {
       <Route path='/signup'>
         <SignUp />
       </Route>
+      <OwnerPostItem/>
 
     </div>
   );
