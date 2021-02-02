@@ -20,7 +20,7 @@ function App() {
         <RenterLogin />
       </Route>
     
-      <Route path='/owner-login'>
+      <Route path='/owner/dashboard'>
       <OwnerDashbaord />
      </Route>
     
@@ -31,7 +31,12 @@ function App() {
       <Route path='/owner-login'>
         <OwnerLogin/>
       </Route>
+      
+      <Route path='/owner/post-item-form'>
       <OwnerPostItem/>
+      </Route>
+
+
 
     </div>
   );
