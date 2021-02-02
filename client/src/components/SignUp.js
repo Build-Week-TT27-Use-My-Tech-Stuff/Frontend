@@ -80,7 +80,7 @@ export default function SignUp(props) {
     return (
         <PageContainer >
             <TitleStyle>
-                <h1> Rent my Tech</h1>
+                <h1>Rent my Tech</h1>
             </TitleStyle>
             <SignUpContainer>
             <div>
@@ -95,23 +95,27 @@ export default function SignUp(props) {
                 <Label>
                     <input placeholder='password' name='pwconfirm' type='password' value={formValues.pwconfirm} onChange={handleChange} className= 'input-box'></input>
                 </Label>
-                <RadBtns className='radioBtns'>
-                <Label>
-                    <input name='userType' type='radio' value='renter' checked={formValues.userType === 'renter'} onChange={handleChange} className= 'input-box'></input>
-                    I want to rent someone else's stuff
-                </Label>
-                <Label>
-                    <input name='userType' type='radio' value='owner' checked={formValues.userType === 'owner'} onChange={handleChange} className= 'input-box'></input>
-                    I want to rent my stuff to someone else
-                </Label>
-                </RadBtns>
+                <RadBtnsCont className="radioBtns">
+                    <RadBtns className='radioBtns'>
+                    <Label>
+                        <input name='userType' type='radio' value='renter' checked={formValues.userType === 'renter'} onChange={handleChange} ></input>
+                        I want to rent someone else's stuff
+                    </Label>
+                    <Label>
+                        <input name='userType' type='radio' value='owner' checked={formValues.userType === 'owner'} onChange={handleChange} ></input>
+                        I want to rent my stuff to someone else
+                    </Label>
+                    </RadBtns>
+                </RadBtnsCont>
                 <div className='formErrors'>
                     <p>{formErrors.username}</p>
                     <p>{formErrors.password}</p>
                     <p>{formErrors.pwconfirm}</p>
                     <p>{formErrors.userType}</p>
                 </div>
+                <div className='SUbtnDiv'>
                 <ButtonStyle disabled={disabled}> Sign Up </ButtonStyle>
+                </div>
                 <Links>
                     <span>Already have an account? </span> 
                     <Link to="/login" className="loginLink" >Login</Link>
@@ -126,10 +130,10 @@ export default function SignUp(props) {
 
 
 const PageContainer = styled.div`
-    border: solid 3px purple;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;`
+    flex-wrap: wrap;
+    height: 100vh;`
 
 const TitleStyle = styled.div`
     color: #353535;
@@ -139,27 +143,39 @@ const TitleStyle = styled.div`
     width:100%;
     display:flex; 
     justify-content: center;
+    font-family: 'Nova Mono', monospace;
+    font-style: normal;
+    font-weight: normal;
+    margin: 3% auto;
 `
 
 const SignUpContainer= styled.div`
-    border: 2px solid yellow;
     width: 50%;
     background-color: #0C2A3E;
     display:flex;
     justify-content: center;
-    padding: 3% 3% 6% 3%;
+    padding: 3% 1%;
     text-align: center;
     box-shadow: 0px 30px 60px -40px rgba(31, 38, 23, 0.5);
     border-radius: 10px;
     color: #FFFFFF;
+    margin-bottom: 4%;
+
+    h1{
+      margin-bottom: 8%;
+      font-family: 'Nova Square', monospace;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 3rem;
+    }
     `
 
 const ButtonStyle = styled.button`
     border-radius: 2rem;
     background-color:#80ED99;
     color: #353535;
-    height: 2.2rem;
-    width: 26rem;
+    height: 2.3rem;
+    width: 24rem;
     border: none;
     cursor: pointer;
     font-size: 1rem;  
@@ -169,7 +185,6 @@ const Form = styled.form`
     display:flex;
     justify-content:center;
     flex-direction: column;
-    border: 1px solid yellow;
 `
 const Label = styled.label`
     padding: 1%;
@@ -180,9 +195,14 @@ const Links = styled.div`
   text-align: right; 
 `
 const RadBtns = styled.div`
-border: 1px solid red;
-width: 30%;
-display: flex;
-justify-content:center;
-flex-wrap: wrap;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: left;
 `
+
+const RadBtnsCont = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
