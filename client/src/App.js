@@ -5,8 +5,7 @@ import React from "react";
 import {Route} from 'react-router-dom'
 import SignUp from './components/SignUp'
 import OwnerLogin from './components/OwnerLogin'
-
-
+import OwnerDashbaord from './components/owner-dashboard'
 
 function App() {
   
@@ -16,10 +15,14 @@ function App() {
       <Route path='/renter-login'>
         <RenterLogin />
       </Route>
-      
+    
+      <Route path='/owner-login'>
+      <OwnerDashbaord />
+     </Route>
+    
       <Route path='/signup'>
         <SignUp />
-      </Route>
+      </Route> 
 
       <Route path='/owner-login'>
         <OwnerLogin/>
