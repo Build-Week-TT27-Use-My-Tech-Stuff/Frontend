@@ -1,6 +1,85 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 .App {
   text-align: center;
+  background-color: #EEEEEE;
 }
 
 .App-logo {
@@ -25,22 +104,17 @@
   color: white;
 }
 .App-header h1{
-  position: absolute;
-  width: 370px;
-  height: 88px;
-  left: 535px;
-  top: 174px;
 
-  font-family: 'NovaMono', monospace;
+  font-family: 'Nova Mono', monospace;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
-  line-height: 67px;
   display: flex;
   align-items: center;
   text-align: center;
 
   color: #353535;
+  padding-bottom:1em;
 
 }
 .App-link {
@@ -56,12 +130,65 @@
   }
 }
 .renter-login {
-  position: absolute;
+  display: flex;
+  font-family: 'Nova Square', monospace;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
   width: 745px;
-  height: 440px;
-  left: 348px;
-  top: 292px;
-
+  
   background: #163245;
   border-radius: 20px;
+}
+.renter-div{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+}
+.nav-link{
+  display: flex;
+  width:97%;
+  justify-content: flex-end;
+}
+.nav-link a{
+  color: #000000;
+}
+.renter-div h1{
+  display:flex;
+  width:100%;
+  justify-content: space-around;
+}
+.renter-login h2{
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  padding:.7em;
+  color: #FFFFFF;
+}
+.renter-input{
+  display: flex;
+  flex-direction: column;
+}
+
+.login-btn{
+  width: 100%;
+  background: #80ED99;
+  border-radius: 20px;
+}
+.sign-up{
+  width:100%;
+  text-align: right;
+  font-size: 20px;
+}
+.sign-up a{
+  text-decoration: none;
+  color: #80ED99;
+}
+.nav-link a{
+  text-decoration: none;
+  display: flex;
+  justify-content: right;
+  align-items: right;
 }
