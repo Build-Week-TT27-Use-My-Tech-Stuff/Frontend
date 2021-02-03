@@ -4,13 +4,14 @@ import RenterLogin from './components/renter-login'
 import React from "react";
 import {Route} from 'react-router-dom'
 import SignUp from './components/SignUp'
-
+import ItemList from './components/item-list'
 import OwnerPostItem from './components/OwnerPostItemForm'
-
+import Navbar from './components/navbar'
 import OwnerLogin from './components/OwnerLogin'
 import OwnerDashbaord from './components/owner-dashboard'
 import RenterBoard from './components/renter-board'
 import OwnerBoard from './components/owner-board'
+import ItemCard from './components/item-card';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
   return (
     <div className="App">
 
-      <OwnerBoard/>
+      <Navbar/>
+      <ItemCard/>
       <Route path='/renter-login'>
         <RenterLogin />
       </Route>
