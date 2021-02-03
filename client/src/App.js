@@ -22,6 +22,9 @@ function App() {
 
       <Navbar/>
       <ItemCard/>
+      <Route path = '/owner/item-dashboard'>
+      <OwnerBoard />
+      </Route>
       <Route path='/renter-login'>
         <RenterLogin />
       </Route>
