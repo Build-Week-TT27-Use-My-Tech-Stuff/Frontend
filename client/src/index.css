@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EEEEEE;
 }
 
 code {
@@ -20,6 +21,7 @@ code {
   background-color:#FFFFFF;
   border: none;
   width: 24rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding: 1% 0% 1% 4%;
+  margin: 1%;
 }
