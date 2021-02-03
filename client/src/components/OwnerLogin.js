@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import OwnerLoginForm from './OwnerLoginForm'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom';
+import axios from 'axios'
+
 
 const Card = styled.section`
 background-color:#163245;
@@ -31,6 +33,18 @@ function OwnerLogin() {
         password:""
         })
 
+        useEffect(() => {
+          axios.post('https://usemytechstuff.herokuapp.com/api/auth/login', formvalues)
+              .then((response) =>{ 
+                console.log(response);
+              }, (error) => {
+                console.log(error);
+              }
+              )},[]);
+
+
+
+
 
     return (
       <div className="App">
@@ -39,7 +53,6 @@ function OwnerLogin() {
         </Link>
 ​
         <H1 >Rent my Tech</H1>
-​
         <Card>
         <H1>Owner Login</H1>
         <OwnerLoginForm 
