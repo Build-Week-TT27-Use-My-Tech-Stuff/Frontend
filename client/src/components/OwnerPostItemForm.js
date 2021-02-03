@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useHistory} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import OwnerPostItemConf from './OwnerPostItemConf'
 
 const initOIFormValues = {
     name:'',
@@ -11,13 +12,13 @@ const initOIFormValues = {
 }
 
 export default function OwnerPostItem() {
-    const [item, setItem] = useState([])
+    const [items, setItems] = useState([])
     const [formValues, setFormValues]=useState(initOIFormValues)
 
     const postNewItem = (newItem) =>{
         axios.post('https://reqres.in/api/users', newItem)
         .then((resp)=>{
-          setItem([resp.data, ...item])
+          setItems([resp.data, ...items])
           setFormValues(initOIFormValues)
         })
       }
@@ -26,6 +27,8 @@ export default function OwnerPostItem() {
         const { name, value }= evt.target;
         setFormValues({...formValues, [name]:value})
     }
+
+    // const history = useHistory();
 
     const submitForm = (evt) => {
         evt.preventDefault();
@@ -36,7 +39,8 @@ export default function OwnerPostItem() {
             price: formValues.price.trim(),
             time: formValues.time,
         }
-        postNewItem(newItem)
+        postNewItem(newItem);
+        // history.push('/owner/post-item-form/confirmation')
 
     }
 
@@ -93,6 +97,20 @@ export default function OwnerPostItem() {
                     </PostBtnDiv>
                 </form>
             </FormContainer>
+
+            {
+                items.map(item=>{
+                    return(
+                        <div>
+                            <h3>{item.name}</h3>
+                            <h3>{item.description}</h3>
+                            <h3>{item.price} per {item.time}</h3>
+                        </div>
+                    )
+                })
+            }
+           
+            {/* <OwnerPostItemConf items={items}/> */}
         </PageContainer>
     )
 }

@@ -11,15 +11,18 @@ import OwnerLogin from './components/OwnerLogin'
 import OwnerDashbaord from './components/owner-dashboard'
 import RenterBoard from './components/renter-board'
 import OwnerBoard from './components/owner-board'
-
+import OwnerPostItemConf from './components/OwnerPostItemConf'
 
 function App() {
   
 
   return (
     <div className="App">
+      
+      <Route path='/ownerboard'>  
+        <OwnerBoard/>
+      </Route>
 
-      <OwnerBoard/>
       <Route path='/renter-login'>
         <RenterLogin />
       </Route>
@@ -36,10 +39,14 @@ function App() {
         <OwnerLogin/>
       </Route>
       
+      
       <Route path='/owner/post-item-form'>
       <OwnerPostItem/>
       </Route>
 
+      <Route path='/owner/post-item-form/confirmation'>
+      <OwnerPostItemConf/>
+      </Route>
 
 
     </div>
