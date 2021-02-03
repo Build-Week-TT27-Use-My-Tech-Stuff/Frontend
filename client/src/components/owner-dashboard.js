@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
+
 
 const HomeDiv = styled.div`
-background-color:white;
+background-color:#EEEEEE;
 
 `
 
@@ -66,9 +68,15 @@ const OwnerDashbaord = () => {
     <Div2>
     <h1>What would you like to do?</h1>
     </Div2>
+
+    <Link to='/owner/item-dashboard'>
     <Button1>Check my items</Button1>
-    
+    </Link>
+
+    <Link to='/owner/post-item-form'>
+
     <Button2>Post New Item +</Button2>
+    </Link>
 </HomeDiv>
   );
 };
