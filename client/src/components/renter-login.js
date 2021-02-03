@@ -1,6 +1,4 @@
 import React from "react";
-import SignUp from './sign-up-test'
-import OwnerLogin from './owner-login-test'
 import {Link, Route, Switch} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 const RenterLogin = () => {
