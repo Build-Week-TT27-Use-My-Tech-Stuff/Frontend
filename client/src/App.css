@@ -76,10 +76,13 @@ select {
     scroll-behavior: auto !important;
   }
 }
+body{
+  background-color: #EEEEEE;
+}
 
 .App {
   text-align: center;
-  background-color: #EEEEEE;
+  
 }
 
 .App-logo {
@@ -153,6 +156,49 @@ select {
 }
 .nav-link a{
   color: #000000;
+}
+.renter-board{
+  display:flex;
+  width:100%;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Nova Square', monospace;
+}
+.item-card p{
+  background: #163245;
+  color: #F7F7F7;
+  
+}
+.renter-board h3{
+  margin-top:4em;
+}
+.header-renter-board{
+  display: flex;
+  font-family: 'Nova Mono', monospace;
+  justify-content: space-between;
+  background: #163245;
+  color: #F7F7F7;
+}
+.item-card{
+  margin:2em;
+  width: 25%;
+  border-radius: 10%;
+  overflow: hidden;
+}
+.renter-board a{
+  text-decoration: none;
+  position: relative;
+  padding:.5em;
+  margin: 2em 1em 0;
+  float:right;
+  background: #80ED99;
+  width:13%;
+  border-radius: 5.1875em;
+}
+.renter-items{
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 .renter-div h1{
   display:flex;
