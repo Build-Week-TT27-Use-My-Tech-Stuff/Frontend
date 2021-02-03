@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useHistory} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import OwnerPostItemConf from './OwnerPostItemConf'
+import {Route} from 'react-router-dom'
 
 const initOIFormValues = {
     name:'',
@@ -11,13 +13,13 @@ const initOIFormValues = {
 }
 
 export default function OwnerPostItem() {
-    const [item, setItem] = useState([])
+    const [items, setItems] = useState([])
     const [formValues, setFormValues]=useState(initOIFormValues)
 
     const postNewItem = (newItem) =>{
         axios.post('https://reqres.in/api/users', newItem)
         .then((resp)=>{
-          setItem([resp.data, ...item])
+          setItems([resp.data, ...items])
           setFormValues(initOIFormValues)
         })
       }
@@ -26,6 +28,8 @@ export default function OwnerPostItem() {
         const { name, value }= evt.target;
         setFormValues({...formValues, [name]:value})
     }
+
+    // const history = useHistory();
 
     const submitForm = (evt) => {
         evt.preventDefault();
@@ -36,7 +40,8 @@ export default function OwnerPostItem() {
             price: formValues.price.trim(),
             time: formValues.time,
         }
-        postNewItem(newItem)
+        postNewItem(newItem);
+        // history.push('/owner/post-item-form/confirmation')
 
     }
 
@@ -91,8 +96,43 @@ export default function OwnerPostItem() {
                     <PostBtnDiv className='postBtnDiv'>
                         <ButtonStyle>Post New Item</ButtonStyle>
                     </PostBtnDiv>
+                    
                 </form>
             </FormContainer>
+            {
+                items.map(item=>{
+                    return(
+                        <div>
+                            <TitleStyle1>
+                                <h1> Your Item has been posted! </h1>
+                             </TitleStyle1>
+                             <ConfirmContainer>
+                                 <div>
+                                    <h3 className='itemConf'>Item:</h3>
+                                    <h2 className='itemConf'>{item.name}</h2>
+                                 </div>
+                                <div>
+                                    <h3 className='descriptionConf'>Description: </h3>
+                                    <h2 className='descriptionConf'>{item.description}</h2>
+                                </div>
+                                <div>
+                                    <h3 className='pricingConf'>Pricing: </h3>
+                                    <h2 className='pricingConf'>{item.price} per {item.time}</h2>
+                                </div>
+                             </ConfirmContainer>
+                            <ButtonStyle1>Edit Listing </ButtonStyle1>
+                            <ButtonStyle2>Delete Listing </ButtonStyle2>
+
+                        </div>
+                    )
+                })
+            }
+
+        
+           {/* <Route path='/owner/post-item-form/confirmation'>
+            <OwnerPostItemConf items={items}/>
+          </Route> */}
+           
         </PageContainer>
     )
 }
@@ -171,4 +211,70 @@ const TitleStyle = styled.div`
     font-style: normal;
     font-weight: normal;
     margin: 3% auto;
+`
+
+///Next form over styles
+const TitleStyle1 = styled.div`
+    color: #353535;
+    padding-top: 1.5rem;
+    font-size: 1.2rem;
+    padding-left: 2rem; 
+    width:100%;
+    display:flex; 
+    justify-content: center;
+    font-family: 'Nova Mono', monospace;
+    font-style: normal;
+    font-weight: normal;
+    margin: 3% auto;
+`
+const ButtonStyle1 = styled.button`
+    border-radius: 2rem;
+    background-color:#80ED99;
+    color: #353535;
+    height: 2.3rem;
+    width: 15rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;  
+    margin: 0% 0% 1% 0%;
+`
+const ButtonStyle2 = styled.button`
+    border-radius: 2rem;
+    background-color:#C4C4C4;
+    color: #FFFFFF;
+    height: 2.3rem;
+    width: 15rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;  
+    margin: 0% 0% 1% 0%;
+`
+
+const ConfirmContainer = styled.div`
+display: flex;
+justify-content:space-evenly;
+background: #FFFFFF;
+width: 900px;
+margin-bottom: 4%;
+
+
+h3{
+    font-size: 1.5rem; 
+}
+
+h2{
+    
+    font-size: 1rem;
+    text-align: left;
+}
+
+#itemConf{
+    width: 150px;
+}
+#descriptionConf{
+    width: 500px;
+}
+#pricingConf{
+    width: 150px;
+}
 `
