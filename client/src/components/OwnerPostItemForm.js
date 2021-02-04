@@ -1,9 +1,11 @@
 
-import React, { useState, useParams } from 'react';
+import React, { useState, createContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import OwnerPostItemConf from './OwnerPostItemConf';
 import { Route, useHistory } from 'react-router-dom';
+import { ItemContext } from '../context/UserContext';
+
 
 
 const initOIFormValues = {
@@ -17,8 +19,10 @@ const initOIFormValues = {
 export default function OwnerPostItem() {
   const [items, setItems] = useState([]);
   const [formValues, setFormValues] = useState(initOIFormValues);
-  //   const { push } = useHistory();
-  //   const { id } = useParams();
+  
+
+
+
   let history = useHistory();
   const postNewItem = (newItem) => {
     axios
@@ -26,8 +30,7 @@ export default function OwnerPostItem() {
       .then((resp) => {
         setItems([resp.data, ...items]);
         setFormValues(initOIFormValues);
-        history.push('/owner/post-item-form/confirmation');
-        console.log(resp);
+        // history.push('/owner/post-item-form/confirmation');
       })
       .catch((err) => console.log(err));
   };
@@ -37,7 +40,6 @@ export default function OwnerPostItem() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  // const history = useHistory();
 
   const submitForm = (evt) => {
     evt.preventDefault();
@@ -49,11 +51,15 @@ export default function OwnerPostItem() {
       //   time: formValues.time,
     };
     postNewItem(newItem);
-    // history.push('/owner/post-item-form/confirmation')
+    history.push('/owner/confirmation')
   };
 
   return (
+    
     <PageContainer>
+      <ItemContext.Provider value={items}>
+          <OwnerPostItemConf/>
+      </ItemContext.Provider>
       <TitleStyle>
         <h1>Post a New Item for Rent</h1>
       </TitleStyle>
@@ -120,34 +126,36 @@ export default function OwnerPostItem() {
         </form>
       </FormContainer>
       {items.map((item) => {
-        return (
-          <div>
-            <TitleStyle1>
-              <h1> Your Item has been posted! </h1>
-            </TitleStyle1>
-            <ConfirmContainer>
-              <div>
-                <h3 className='itemConf'>Item:</h3>
-                <h2 className='itemConf'>{item.name}</h2>
-              </div>
-              <div>
-                <h3 className='descriptionConf'>Description: </h3>
-                <h2 className='descriptionConf'>{item.description}</h2>
-              </div>
-              <div>
-                <h3 className='pricingConf'>Pricing: </h3>
-                <h2 className='pricingConf'>
-                  {item.price} per {item.time}
-                </h2>
-              </div>
-            </ConfirmContainer>
-            <ButtonStyle1>Edit Listing </ButtonStyle1>
-            <ButtonStyle2>Delete Listing </ButtonStyle2>
-          </div>
-        );
-      })}
+      return (
+        <div>
+          <TitleStyle1>
+            <h1> Your Item has been posted! </h1>
+          </TitleStyle1>
+          <ConfirmContainer>
+            <div>
+              <h3 className='itemConf'>Item:</h3>
+              <h2 className='itemConf'>{item.name}</h2>
+            </div>
+            <div>
+              <h3 className='descriptionConf'>Description: </h3>
+              <h2 className='descriptionConf'>{item.description}</h2>
+            </div>
+            <div>
+              <h3 className='pricingConf'>Pricing: </h3>
+              <h2 className='pricingConf'>
+                {item.price} per {item.time}
+              </h2>
+            </div>
+          </ConfirmContainer>
+          <ButtonStyle1>Edit Listing </ButtonStyle1>
+          <ButtonStyle2>Delete Listing </ButtonStyle2>
+        </div>
+      );
+    })
+  }     
 
     </PageContainer>
+    
   );
 
 }
@@ -195,11 +203,11 @@ const ImgUpload = styled.div`
 
 const PostBtnDiv = styled.div``;
 
-const RadBtnsCont = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-`;
+// const RadBtnsCont = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-evenly;
+// `;
 const InputsandImageCont = styled.div`
   display: flex;
   justify-content: center;
@@ -224,7 +232,6 @@ const TitleStyle = styled.div`
   margin: 3% auto;
 `;
 
-///Next form over styles
 const TitleStyle1 = styled.div`
   color: #353535;
   padding-top: 1.5rem;
