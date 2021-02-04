@@ -2,7 +2,7 @@ import React, {useState, useHistory} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Navbar from '../components/navbar'
-import OwnerPostItemConf from './OwnerPostItemConf'
+// import OwnerPostItemConf from './OwnerPostItemConf'
 import {Route} from 'react-router-dom'
 
 
@@ -68,18 +68,19 @@ export default function OwnerPostItem() {
                             <Label>
                                 <select onChange={handleChange} value={formValues.categories} name='categories' className= 'input-box'>
                                     <option value=''>Categories</option>
-                                    <option value='serverBlades'>Server Blades</option>
-                                    <option value='n64Games'>n64 Games</option>
-                                    <option value='gamingMice'>Gaming Mice</option>
-                                    <option value='vidGameConsole'>Video Game Console</option>
-                                    <option value='sonyWalkman'>Sony Walkman</option>
-                                    <option value='tigerElectronics'>Tiger Electronics: Deluxe Talkboy</option>
+                                    {/* Computers, Filming, Gaming, Photography, Music, TVs */}
+                                    <option value='gaming'>Gaming</option>
+                                    <option value='video'>Video</option>
+                                    <option value='computers'>Computers</option>
+                                    <option value='photography'>Photography</option>
+                                    <option value='audio'>Audio/Speakers</option>
+                                    <option value='tvs'>TVs</option>
                                 </select>
                             </Label>
                             <Label>
                                 <input name='price' type='text' value={formValues.price} onChange={handleChange} placeholder='Item Price' className= 'input-box'></input>
                             </Label>
-                            <RadBtnsCont>
+                            {/* <RadBtnsCont>
                                 <Label>
                                     <input name='time' type='radio' value='day' checked={formValues.time === 'day'} onChange={handleChange}></input>
                                     Per Day
@@ -92,7 +93,7 @@ export default function OwnerPostItem() {
                                     <input name='time' type='radio' value='month' checked={formValues.time === 'month'} onChange={handleChange}></input>
                                     Per Month
                                 </Label>
-                            </RadBtnsCont>
+                            </RadBtnsCont> */}
                         </InputContainer>
                         <ImgUpload className='imgUpload'>
                             <h6>Upload an Image</h6>

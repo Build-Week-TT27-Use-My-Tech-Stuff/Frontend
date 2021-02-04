@@ -19,13 +19,15 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
+      
+
+      <Navbar/>
         <Route path='/ownerboard'>  
           <OwnerBoard/>
         </Route>
 
-      <Navbar/>
-      <ItemCard/>
+      
+      {/* <ItemCard/> */}
       <Route path = '/owner/item-dashboard'>
       <OwnerBoard />
       </Route>
@@ -52,7 +54,10 @@ function App() {
         <Route path='/owner/post-item-form'>
         <OwnerPostItem/>
         </Route>
-    </Switch>
+  
+        <Route path='/owner/post-item-form/confirmation'>
+        <OwnerPostItem/>
+        </Route>
 
 
     </div>
