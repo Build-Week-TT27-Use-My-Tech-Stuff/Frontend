@@ -1,14 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import ItemCard from './item-card';
+import Navbar from '../components/navbar'
+
+
+
 const OwnerBoard = () => {
   const dummyData = ['','','','','', ''];
   return (
+    <div>
+    <Navbar/>
     <div className ='renter-board'>
-      <header className = 'header-renter-board'>
-        <h1>Rent my Tech</h1>
-        <h2>Welcome User</h2>
-      </header>
+
       <div className = 'owner-post'>
         <Link>Post New Item +</Link>
       </div>
@@ -16,6 +19,7 @@ const OwnerBoard = () => {
       <div className = 'renter-items'>
         {dummyData.map(() => {return <ItemCard/>})}
       </div> 
+    </div>
     </div>
   );
 };
