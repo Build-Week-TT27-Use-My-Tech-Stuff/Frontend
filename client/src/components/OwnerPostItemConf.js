@@ -6,7 +6,7 @@ export default function OwnerPostItemConf(props) {
   console.log(items);
   return (
     <div>
-      {items.map((item) => (
+      {items?.map((item) => (
         <div>
           <TitleStyle>
             <h1> Your Item has been posted! </h1>

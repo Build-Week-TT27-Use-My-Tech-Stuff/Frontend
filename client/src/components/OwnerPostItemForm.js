@@ -107,38 +107,6 @@ export default function OwnerPostItem() {
                   className='input-box'
                 ></input>
               </Label>
-              {/* <RadBtnsCont>
-                <Label>
-                  <input
-                    name='time'
-                    type='radio'
-                    value='day'
-                    checked={formValues.time === 'day'}
-                    onChange={handleChange}
-                  ></input>
-                  Per Day
-                </Label>
-                <Label>
-                  <input
-                    name='time'
-                    type='radio'
-                    value='week'
-                    checked={formValues.time === 'week'}
-                    onChange={handleChange}
-                  ></input>
-                  Per Week
-                </Label>
-                <Label>
-                  <input
-                    name='time'
-                    type='radio'
-                    value='month'
-                    checked={formValues.time === 'month'}
-                    onChange={handleChange}
-                  ></input>
-                  Per Month
-                </Label>
-              </RadBtnsCont> */}
             </InputContainer>
             <ImgUpload className='imgUpload'>
               <h6>Upload an Image</h6>
@@ -149,34 +117,33 @@ export default function OwnerPostItem() {
           </PostBtnDiv>
         </form>
       </FormContainer>
-      {/* {
-                items.map(item=>{
-                    return(
-                        <div>
-                            <TitleStyle1>
-                                <h1> Your Item has been posted! </h1>
-                             </TitleStyle1>
-                             <ConfirmContainer>
-                                 <div>
-                                    <h3 className='itemConf'>Item:</h3>
-                                    <h2 className='itemConf'>{item.name}</h2>
-                                 </div>
-                                <div>
-                                    <h3 className='descriptionConf'>Description: </h3>
-                                    <h2 className='descriptionConf'>{item.description}</h2>
-                                </div>
-                                <div>
-                                    <h3 className='pricingConf'>Pricing: </h3>
-                                    <h2 className='pricingConf'>{item.price} per {item.time}</h2>
-                                </div>
-                             </ConfirmContainer>
-                            <ButtonStyle1>Edit Listing </ButtonStyle1>
-                            <ButtonStyle2>Delete Listing </ButtonStyle2>
-
-                        </div>
-                    )
-                })
-            } */}
+      {items.map((item) => {
+        return (
+          <div>
+            <TitleStyle1>
+              <h1> Your Item has been posted! </h1>
+            </TitleStyle1>
+            <ConfirmContainer>
+              <div>
+                <h3 className='itemConf'>Item:</h3>
+                <h2 className='itemConf'>{item.name}</h2>
+              </div>
+              <div>
+                <h3 className='descriptionConf'>Description: </h3>
+                <h2 className='descriptionConf'>{item.description}</h2>
+              </div>
+              <div>
+                <h3 className='pricingConf'>Pricing: </h3>
+                <h2 className='pricingConf'>
+                  {item.price} per {item.time}
+                </h2>
+              </div>
+            </ConfirmContainer>
+            <ButtonStyle1>Edit Listing </ButtonStyle1>
+            <ButtonStyle2>Delete Listing </ButtonStyle2>
+          </div>
+        );
+      })}
 
       {/* <Route path='/owner/post-item-form/confirmation'>
             <OwnerPostItemConf items={items}/>

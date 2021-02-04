@@ -18,8 +18,8 @@ export default Yup.object().shape({
   // .test('passwords-match', 'Passwords must match', function(value){
   //     return this.parent.password === value
   // }),
-  userType: Yup.string().oneOf(
-    ['renter', 'owner'],
-    'Please select a user type.'
-  ),
+  // userType: Yup.string().oneOf(
+  //   ['renter', 'owner'],
+  //   'Please select a user type.'
+  // ),
 });
