@@ -1,8 +1,8 @@
-import React, { useState, useHistory, useParams } from 'react';
+import React, { useState, useParams } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import OwnerPostItemConf from './OwnerPostItemConf';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 
 const initOIFormValues = {
   name: '',
@@ -17,14 +17,14 @@ export default function OwnerPostItem() {
   const [formValues, setFormValues] = useState(initOIFormValues);
   //   const { push } = useHistory();
   //   const { id } = useParams();
-
+  let history = useHistory();
   const postNewItem = (newItem) => {
     axios
       .post(`https://usemytechstuff.herokuapp.com/api/tech`, newItem)
       .then((resp) => {
-        // setItems([resp.data, ...items]);
-        // setFormValues(initOIFormValues);
-        // push('/owner/post-item-form/confirmation');
+        setItems([resp.data, ...items]);
+        setFormValues(initOIFormValues);
+        history.push('/owner/post-item-form/confirmation');
         console.log(resp);
       })
       .catch((err) => console.log(err));

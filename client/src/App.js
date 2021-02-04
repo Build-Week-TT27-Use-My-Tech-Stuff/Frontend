@@ -30,6 +30,10 @@ function App() {
       <PrivateRoute path='/owner/item-dashboard' component={OwnerBoard} />
       <PrivateRoute path='/owner/dashboard' component={OwnerDashboard} />
       <PrivateRoute path='/owner/post-item-form' component={OwnerPostItem} />
+      <PrivateRoute
+        path='/owner/post-item-confirmation'
+        component={OwnerPostItemConf}
+      />
     </div>
   );
 }

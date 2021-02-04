@@ -6,21 +6,19 @@ export default function OwnerPostItemConf(props) {
   console.log(items);
   return (
     <div>
-      {items.map((item) => {
-        return (
-          <div>
-            <TitleStyle>
-              <h1> Your Item has been posted! </h1>
-            </TitleStyle>
-            <h3>{item.name}</h3>
-            <h3>{item.description}</h3>
-            <h3>
-              {item.price} per {item.time}
-            </h3>
-          </div>
-        );
-      })}
-
+      {items.map((item) => (
+        <div>
+          <TitleStyle>
+            <h1> Your Item has been posted! </h1>
+          </TitleStyle>
+          <h3>{item.name}</h3>
+          <h3>{item.description}</h3>
+          <h3>
+            {item.cost}
+            {/* per {item.time} */}
+          </h3>
+        </div>
+      ))}
       <ButtonStyle>Edit Listing </ButtonStyle>
       <ButtonStyle2>Delete Listing </ButtonStyle2>
     </div>
