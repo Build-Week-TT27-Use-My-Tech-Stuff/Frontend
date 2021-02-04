@@ -1,47 +1,42 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { ItemContext } from '../context/UserContext';
+import { ItemContext } from '../context/ItemContext';
 
 export default function OwnerPostItemConf() {
-  
-  
-  const ItemValues= useContext(ItemContext)
-console.log('do props work', ItemValues)
-
+  const { items } = useContext(ItemContext);
+  console.log('the items', items);
   return (
     <div>
-    {ItemValues.map((item) => {
-      return (
-        <div>
-          <TitleStyle1>
-            <h1> Your Item has been posted! </h1>
-          </TitleStyle1>
-          <ConfirmContainer>
-            <div>
-              <h3 className='itemConf'>Item:</h3>
-              <h2 className='itemConf'>{item.name}</h2>
-            </div>
-            <div>
-              <h3 className='descriptionConf'>Description: </h3>
-              <h2 className='descriptionConf'>{item.description}</h2>
-            </div>
-            <div>
-              <h3 className='pricingConf'>Pricing: </h3>
-              <h2 className='pricingConf'>
-                {item.price} per {item.time}
-              </h2>
-            </div>
-          </ConfirmContainer>
-          <ButtonStyle1>Edit Listing </ButtonStyle1>
-          <ButtonStyle2>Delete Listing </ButtonStyle2>
-        </div>
-      );
-    })
-  }
-  </div>
+      {items.map((item) => {
+        return (
+          <div>
+            <TitleStyle1>
+              <h1> Your Item has been posted! </h1>
+            </TitleStyle1>
+            <ConfirmContainer>
+              <div>
+                <h3 className='itemConf'>Item:</h3>
+                <h2 className='itemConf'>{item.name}</h2>
+              </div>
+              <div>
+                <h3 className='descriptionConf'>Description: </h3>
+                <h2 className='descriptionConf'>{item.description}</h2>
+              </div>
+              <div>
+                <h3 className='pricingConf'>Pricing: </h3>
+                <h2 className='pricingConf'>
+                  {item.price} per {item.time}
+                </h2>
+              </div>
+            </ConfirmContainer>
+            <ButtonStyle1>Edit Listing </ButtonStyle1>
+            <ButtonStyle2>Delete Listing </ButtonStyle2>
+          </div>
+        );
+      })}
+    </div>
   );
 }
-
 
 const TitleStyle1 = styled.div`
   color: #353535;

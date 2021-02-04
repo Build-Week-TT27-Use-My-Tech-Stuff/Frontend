@@ -13,6 +13,7 @@ import OwnerBoard from './components/owner-board';
 import OwnerPostItemConf from './components/OwnerPostItemConf';
 import ItemCard from './components/item-card';
 import PrivateRoute from './components/PrivateRoute';
+import { ItemContext } from './context/ItemContext';
 
 function App() {
   return (
