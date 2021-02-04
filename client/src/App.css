@@ -174,6 +174,7 @@ body{
 }
 .header-renter-board{
   display: flex;
+  width: 100%;
   font-family: 'Nova Mono', monospace;
   justify-content: space-between;
   background: #163245;
@@ -183,6 +184,7 @@ body{
   margin:2em;
   width: 25%;
   border-radius: 10%;
+  cursor: pointer;
   overflow: hidden;
 }
 .renter-board a{
@@ -238,3 +240,28 @@ body{
   justify-content: right;
   align-items: right;
 }
+.item-list {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.items-div {
+  display:flex;
+  width:70%;
+  flex-flow: row wrap;
+}
+.sidebar{
+  margin-left:1em;
+  width:15%;
+  display:flex;
+  
+  
+}
+.sidebar-filters{
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+  position: absolute;
+  
+}
+

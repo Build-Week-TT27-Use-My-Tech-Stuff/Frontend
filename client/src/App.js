@@ -21,7 +21,7 @@ function App() {
     <div className="App">
 
       <Navbar/>
-      <ItemCard/>
+      <RenterBoard/>
       <Route path='/renter-login'>
         <RenterLogin />
       </Route>
