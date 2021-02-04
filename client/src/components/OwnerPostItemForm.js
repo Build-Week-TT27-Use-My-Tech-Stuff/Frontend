@@ -1,8 +1,10 @@
+
 import React, { useState, useParams } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import OwnerPostItemConf from './OwnerPostItemConf';
 import { Route, useHistory } from 'react-router-dom';
+
 
 const initOIFormValues = {
   name: '',
@@ -145,11 +147,9 @@ export default function OwnerPostItem() {
         );
       })}
 
-      {/* <Route path='/owner/post-item-form/confirmation'>
-            <OwnerPostItemConf items={items}/>
-          </Route> */}
     </PageContainer>
   );
+
 }
 
 const PageContainer = styled.div`

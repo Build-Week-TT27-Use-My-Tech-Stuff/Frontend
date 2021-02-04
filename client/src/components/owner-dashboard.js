@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import Navbar from '../components/navbar'
 
 
 const HomeDiv = styled.div`
@@ -60,11 +61,7 @@ cursor:pointer;
 const OwnerDashbaord = () => {
   return (
 <HomeDiv>
-    <Div >
-        <h2>Rent my Tech</h2>
-        <h2>Welcome,User!</h2>
-    </Div>
-
+<Navbar />
     <Div2>
     <h1>What would you like to do?</h1>
     </Div2>
