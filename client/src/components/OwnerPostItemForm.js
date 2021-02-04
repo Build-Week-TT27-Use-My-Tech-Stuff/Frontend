@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import Navbar from '../components/navbar'
+
 
 const initOIFormValues = {
     name:'',
@@ -41,7 +43,10 @@ export default function OwnerPostItem() {
     }
 
     return (
+        <div>
+        <Navbar />
         <PageContainer>
+
             <TitleStyle>
             <h1>Post a New Item for Rent</h1>
             </TitleStyle>
@@ -94,6 +99,7 @@ export default function OwnerPostItem() {
                 </form>
             </FormContainer>
         </PageContainer>
+        </div>
     )
 }
 
