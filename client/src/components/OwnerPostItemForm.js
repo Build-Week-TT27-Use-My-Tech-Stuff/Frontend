@@ -1,12 +1,8 @@
-
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import OwnerPostItemConf from './OwnerPostItemConf';
+// import OwnerPostItemConf from './OwnerPostItemConf';
 import { Route, useHistory } from 'react-router-dom';
-import { ItemContext } from '../context/UserContext';
-
-
 
 const initOIFormValues = {
   name: '',
@@ -17,11 +13,8 @@ const initOIFormValues = {
 };
 
 export default function OwnerPostItem() {
-  const [items, setItems] = useState([]);
   const [formValues, setFormValues] = useState(initOIFormValues);
-  
-
-
+  const [items, setItems] = useState([]);
 
   let history = useHistory();
   const postNewItem = (newItem) => {
@@ -30,16 +23,14 @@ export default function OwnerPostItem() {
       .then((resp) => {
         setItems([resp.data, ...items]);
         setFormValues(initOIFormValues);
-        // history.push('/owner/post-item-form/confirmation');
       })
       .catch((err) => console.log(err));
   };
-
+  console.log(items);
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setFormValues({ ...formValues, [name]: value });
   };
-
 
   const submitForm = (evt) => {
     evt.preventDefault();
@@ -51,15 +42,11 @@ export default function OwnerPostItem() {
       //   time: formValues.time,
     };
     postNewItem(newItem);
-    history.push('/owner/confirmation')
+    // history.push('/owner/confirmation');
   };
 
   return (
-    
     <PageContainer>
-      <ItemContext.Provider value={items}>
-          <OwnerPostItemConf/>
-      </ItemContext.Provider>
       <TitleStyle>
         <h1>Post a New Item for Rent</h1>
       </TitleStyle>
@@ -94,15 +81,12 @@ export default function OwnerPostItem() {
                   name='category'
                   className='input-box'
                 >
-                  <option value=''>Category</option>
-                  <option value='serverBlades'>Server Blades</option>
-                  <option value='n64Games'>n64 Games</option>
-                  <option value='gamingMice'>Gaming Mice</option>
-                  <option value='vidGameConsole'>Video Game Console</option>
-                  <option value='sonyWalkman'>Sony Walkman</option>
-                  <option value='tigerElectronics'>
-                    Tiger Electronics: Deluxe Talkboy
-                  </option>
+                  <option value='gaming'>Gaming</option>
+                  <option value='video'>Video</option>
+                  <option value='computers'>Computers</option>
+                  <option value='photography'>Photography</option>
+                  <option value='audio'>Audio/Speakers</option>
+                  <option value='tvs'>TVs</option>
                 </select>
               </Label>
               <Label>
@@ -125,39 +109,36 @@ export default function OwnerPostItem() {
           </PostBtnDiv>
         </form>
       </FormContainer>
+
       {items.map((item) => {
-      return (
-        <div>
-          <TitleStyle1>
-            <h1> Your Item has been posted! </h1>
-          </TitleStyle1>
-          <ConfirmContainer>
-            <div>
-              <h3 className='itemConf'>Item:</h3>
-              <h2 className='itemConf'>{item.name}</h2>
-            </div>
-            <div>
-              <h3 className='descriptionConf'>Description: </h3>
-              <h2 className='descriptionConf'>{item.description}</h2>
-            </div>
-            <div>
-              <h3 className='pricingConf'>Pricing: </h3>
-              <h2 className='pricingConf'>
-                {item.price} per {item.time}
-              </h2>
-            </div>
-          </ConfirmContainer>
-          <ButtonStyle1>Edit Listing </ButtonStyle1>
-          <ButtonStyle2>Delete Listing </ButtonStyle2>
-        </div>
-      );
-    })
-  }     
-
+        return (
+          <div>
+            <TitleStyle1>
+              <h1> Your Item has been posted! </h1>
+            </TitleStyle1>
+            <ConfirmContainer>
+              <div>
+                <h3 className='itemConf'>Item:</h3>
+                <h2 className='itemConf'>{item.name}</h2>
+              </div>
+              <div>
+                <h3 className='descriptionConf'>Description: </h3>
+                <h2 className='descriptionConf'>{item.description}</h2>
+              </div>
+              <div>
+                <h3 className='pricingConf'>Pricing: </h3>
+                <h2 className='pricingConf'>
+                  {item.price} per {item.time}
+                </h2>
+              </div>
+            </ConfirmContainer>
+            <ButtonStyle1>Edit Listing </ButtonStyle1>
+            <ButtonStyle2>Delete Listing </ButtonStyle2>
+          </div>
+        );
+      })}
     </PageContainer>
-    
   );
-
 }
 
 const PageContainer = styled.div`
@@ -203,11 +184,6 @@ const ImgUpload = styled.div`
 
 const PostBtnDiv = styled.div``;
 
-// const RadBtnsCont = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: space-evenly;
-// `;
 const InputsandImageCont = styled.div`
   display: flex;
   justify-content: center;
