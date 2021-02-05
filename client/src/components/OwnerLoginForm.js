@@ -24,6 +24,15 @@ const Inputlogin = styled.input`
   cursor: pointer;
   font-family: 'Nova Square', monospace;
   font-size: 1rem;
+  transition-duration: 0.4s;
+  font-size:2rem;
+  :hover{
+  
+  
+    background: #C4C4C4;
+    color: #80ED99;
+  
+  }
 `;
 const Span = styled.span`
   color: #80ed99;

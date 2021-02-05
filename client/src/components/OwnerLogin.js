@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import Navbar from './navbar'
+
 
 const Card = styled.section`
   background-color: #163245;
@@ -13,11 +15,13 @@ const Card = styled.section`
   margin-left: 25rem;
   margin-right: 25rem;
   font-family: 'Nova Mono', monospace;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 const H1 = styled.h1`
   font-size: 3rem;
   font-family: 'Nova Mono', monospace;
+  margin-top:5rem;
 `;
 const H3 = styled.h3`
   font-family: 'Nova Square', monospace;
@@ -44,9 +48,8 @@ function OwnerLogin() {
 
   return (
     <div className='App'>
-      <Link to='/renter-login'>
-        <H3>Are you a renter?</H3>
-      </Link>
+
+
       ​<H1>Rent my Tech</H1>
       <Card>
         <H1>Owner Login</H1>

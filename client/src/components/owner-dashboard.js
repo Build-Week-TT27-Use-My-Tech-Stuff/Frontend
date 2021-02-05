@@ -38,6 +38,16 @@ margin-right:2rem;
 color:white;
 margin-top:2rem;
 cursor:pointer;
+transition-duration: 0.4s;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+:hover{
+  
+  
+  background: #80ED99;
+  color: #C4C4C4;
+
+}
+
 
 `
 
@@ -51,7 +61,15 @@ font-family: 'Nova Square', monospace;
 margin-left:2rem;
 margin-top:2rem;
 cursor:pointer;
+transition-duration: 0.4s;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+:hover{
+  
+  
+  background: #C4C4C4;
+  color: #80ED99;
 
+}
 `
 
 
