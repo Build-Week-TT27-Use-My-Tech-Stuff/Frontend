@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, Route, Switch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 const RenterLogin = () => {
     const {register, handleSubmit, errors} = useForm();
