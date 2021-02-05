@@ -1,12 +1,9 @@
-
 import React, { useState, createContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import OwnerPostItemConf from './OwnerPostItemConf';
 import { Route, useHistory } from 'react-router-dom';
 import { ItemContext } from '../context/UserContext';
-
-
 
 const initOIFormValues = {
   name: '',
@@ -20,9 +17,6 @@ export default function OwnerPostItem() {
   const [items, setItems] = useState([]);
   const [formValues, setFormValues] = useState(initOIFormValues);
   
-
-
-
   let history = useHistory();
   const postNewItem = (newItem) => {
     axios
@@ -39,6 +33,83 @@ export default function OwnerPostItem() {
     const { name, value } = evt.target;
     setFormValues({ ...formValues, [name]: value });
   };
+
+            <TitleStyle>
+            <h1>Post a New Item for Rent</h1>
+            </TitleStyle>
+            <FormContainer className='formContainer'>
+                <form onSubmit={submitForm}>
+                    <InputsandImageCont>
+                        <InputContainer className='inputContainer'>
+                            <Label>
+                                <input name='name' type='text' value={formValues.name} onChange={handleChange} placeholder='Item Name' className= 'input-box'></input>
+                            </Label>
+                            <Label>
+                                <input name='description' type='text' value={formValues.description} onChange={handleChange} placeholder='Item Description' className= 'input-box'></input>
+                            </Label>
+                            <Label>
+                                <select onChange={handleChange} value={formValues.categories} name='categories' className= 'input-box'>
+                                    <option value=''>Categories</option>
+                                    {/* Computers, Filming, Gaming, Photography, Music, TVs */}
+                                    <option value='gaming'>Gaming</option>
+                                    <option value='video'>Video</option>
+                                    <option value='computers'>Computers</option>
+                                    <option value='photography'>Photography</option>
+                                    <option value='audio'>Audio/Speakers</option>
+                                    <option value='tvs'>TVs</option>
+                                </select>
+                            </Label>
+                            <Label>
+                                <input name='price' type='text' value={formValues.price} onChange={handleChange} placeholder='Item Price' className= 'input-box'></input>
+                            </Label>
+                            {/* <RadBtnsCont>
+                                <Label>
+                                    <input name='time' type='radio' value='day' checked={formValues.time === 'day'} onChange={handleChange}></input>
+                                    Per Day
+                                </Label>
+                                <Label>
+                                    <input name='time' type='radio' value='week' checked={formValues.time === 'week'} onChange={handleChange}></input>
+                                    Per Week
+                                </Label>
+                                <Label>
+                                    <input name='time' type='radio' value='month' checked={formValues.time === 'month'} onChange={handleChange}></input>
+                                    Per Month
+                                </Label>
+                            </RadBtnsCont> */}
+                        </InputContainer>
+                        <ImgUpload className='imgUpload'>
+                            <h6>Upload an Image</h6>
+                        </ImgUpload>
+                    </InputsandImageCont>    
+                    <PostBtnDiv className='postBtnDiv'>
+                        <ButtonStyle>Post New Item</ButtonStyle>
+                    </PostBtnDiv>
+                    
+                </form>
+            </FormContainer>
+            {
+                items.map(item=>{
+                    return(
+                        <div>
+                            <TitleStyle1>
+                                <h1> Your Item has been posted! </h1>
+                             </TitleStyle1>
+                             <ConfirmContainer>
+                                 <div>
+                                    <h3 className='itemConf'>Item:</h3>
+                                    <h2 className='itemConf'>{item.name}</h2>
+                                 </div>
+                                <div>
+                                    <h3 className='descriptionConf'>Description: </h3>
+                                    <h2 className='descriptionConf'>{item.description}</h2>
+                                </div>
+                                <div>
+                                    <h3 className='pricingConf'>Pricing: </h3>
+                                    <h2 className='pricingConf'>{item.price} per {item.time}</h2>
+                                </div>
+                             </ConfirmContainer>
+                            <ButtonStyle1>Edit Listing </ButtonStyle1>
+                            <ButtonStyle2>Delete Listing </ButtonStyle2>
 
 
   const submitForm = (evt) => {
