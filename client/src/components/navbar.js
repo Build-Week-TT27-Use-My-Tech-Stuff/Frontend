@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 
 
@@ -17,9 +17,8 @@ color:white;
 font-family: 'Nova Mono', monospace;
 padding-left: 3rem;
 padding-right: 3rem;
-textDecoration: 'none';
+text-decoration: 'none';
 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
 `
 const Button2 = styled.button`
 background: #80ED99;
@@ -41,21 +40,27 @@ margin-top:0.3rem;
 `
 
 const Navbar = () => {
-    
-
-    const printWork = () =>{
-        console.log('click is working in item-card')
-    }
+  const history = useHistory();
+  function LogOut() {
+    localStorage.removeItem('token');
+    history.push('/');
+  }
   return (
-    <div className ='navbar' onClick = {printWork}>
+    <div className ='navbar' >
         <Div>
-        <Link to='/owner/dashboard' style={{ textDecoration: 'none', color: 'white' }}>
-        <h2>Rent my Tech</h2>
-        </Link>
-        <h2>Welcome, User!</h2>
-        <Link to='/'>
-        <Button2>Log out</Button2>
-        </Link>
+          <Link to='/owner/dashboard' style={{ textDecoration: 'none', color: 'white' }}>
+            <h2>Rent my Tech</h2>
+          </Link>
+          <Link to='/item-list' style={{ textDecoration: 'none', color: 'white' }}>
+            <h2>Items</h2>
+          </Link>
+          <Link to='/renter-board' style={{ textDecoration: 'none', color: 'white' }}>
+            <h2>Renter Dashboard</h2>
+          </Link>
+            <h2>Welcome, User!</h2>
+          <Link to='/login'>
+            <Button2 onClick = {LogOut}>Log out</Button2>
+          </Link>
         </Div>
     </div>
   );

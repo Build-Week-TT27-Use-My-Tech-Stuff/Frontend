@@ -1,23 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import Navbar from '../components/navbar'
 
 
 const HomeDiv = styled.div`
 background-color:#EEEEEE;
-
-`
-
-
-const Div = styled.div`
-display: flex;
-justify-content: space-between;
-background:#163245;
-color:white;
-font-family: 'Nova Mono', monospace;
-padding-left: 3rem;
-padding-right: 3rem;
 
 `
 const Div2 = styled.div`
@@ -79,7 +66,7 @@ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 const OwnerDashbaord = () => {
   return (
 <HomeDiv>
-<Navbar />
+
     <Div2>
     <h1>What would you like to do?</h1>
     </Div2>

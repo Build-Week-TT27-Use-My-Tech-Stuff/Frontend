@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import ItemCard from './item-card'
 import {useForm} from 'react-hook-form'
-const ItemList = (props) => {
+const ItemList = () => {
   const {register, handleSubmit, errors} = useForm();
   const [filter, setFilter] = useState([]);
-  console.log('item-list props ', props);
-  const {data} = props;
+  const [item, setItem] = useState([]);
   
   const onSubmit = (data) => {
       console.log(data);
@@ -14,9 +14,17 @@ const ItemList = (props) => {
   const printWork = () =>{
       console.log('click is working in item-list')
     }
+
   useEffect( ()=>{
+    axios.get(`https://usemytechstuff.herokuapp.com/api/tech/`)
+        .then(res =>{
+          console.log('item-list api data ', res.data);
+          setItem(res.data);
+          
+        }).catch(err => console.log(err));
     console.log('item-list page reloaded');
   },[filter])
+  console.log('item-page item ', item);
   return (
     <div className ='item-list' onClick = {printWork}>
       <div className = 'sidebar'>
@@ -48,7 +56,11 @@ const ItemList = (props) => {
         </form>
       </div>
       <div className = 'items-div'>
-        {data.map((x) => {return <ItemCard data = {x} filter = {filter}/>})}
+        {item?.map(data => {
+          return (
+          <ItemCard data = {data}/>
+        )})} 
+        
       </div>
     </div>
   );

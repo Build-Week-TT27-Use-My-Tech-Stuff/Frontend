@@ -1,12 +1,6 @@
 import './App.css';
-import pic1 from './imgs/pic01.jpg'
-import pic2 from './imgs/pic02.jpg'
-import pic3 from './imgs/pic03.jpg'
-import pic4 from './imgs/pic04.jpg'
-import pic5 from './imgs/pic05.jpg'
-import RenterLogin from './components/renter-login';
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import ItemList from './components/item-list';
 import OwnerPostItem from './components/OwnerPostItemForm';
@@ -23,16 +17,20 @@ import ItemPage from './components/item-page'
 function App() {
 
   return (
-    <div className="App"
+    <div className="App">
       <Navbar/>
-      <Route path='/owner-login'>
+      <Route path='/login'>
         <OwnerLogin/>
       </Route>
     
       <Route path='/signup'>
         <SignUp />
       </Route>
-  
+      <Route path = '/renter-board' component = {RenterBoard}/>
+      <PrivateRoute path = '/item-page' component = {ItemPage}/>
+      <PrivateRoute path = '/item-list' component = {ItemList}/>
+        
+     
       <PrivateRoute path='/item-card' component={ItemCard} />
       <PrivateRoute path='/owner/item-dashboard' component={OwnerBoard} />
       <PrivateRoute path='/owner/dashboard' component={OwnerDashboard} />

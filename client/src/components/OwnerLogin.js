@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import OwnerLoginForm from './OwnerLoginForm';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import Navbar from './navbar'
 
 
 const Card = styled.section`
