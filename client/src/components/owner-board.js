@@ -17,7 +17,7 @@ const OwnerBoard = () => {
       </div>
       <h3>Here are your items:</h3>
       <div className = 'renter-items'>
-        {dummyData.map(() => {return <ItemCard/>})}
+        {dummyData.map((x) => {return <ItemCard data = {x}/>})}
       </div> 
     </div>
     </div>
