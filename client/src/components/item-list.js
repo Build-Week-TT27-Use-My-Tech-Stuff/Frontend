@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import ItemCard from './item-card'
 import {useForm} from 'react-hook-form'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 const ItemList = (props) => {
   const {register, handleSubmit, errors} = useForm();
   const [filter, setFilter] = useState([]);
   console.log('item-list props ', props);
   const {data} = props;
-  
+  axiosWithAuth().get('/api/tech')
+  .then(res =>{
+    console.log('item-list axios data ',res.data)
+  })
   const onSubmit = (data) => {
       console.log(data);
+
       setFilter(data);
   } 
   const printWork = () =>{
