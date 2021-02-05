@@ -77,10 +77,10 @@ function App() {
   },
 ]
   return (
-    <div className='App'>
-      <Navbar />
-      <Route path='/login'>
-        <OwnerLogin />
+    <div className="App"
+      <Navbar/>
+      <Route path='/owner-login'>
+        <OwnerLogin/>
       </Route>
       <Route path='/signup'>
         <SignUp />
